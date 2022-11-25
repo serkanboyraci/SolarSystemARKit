@@ -43,6 +43,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.scene.rootNode.addChildNode(mySphere3) // to define rootnode
         
         sceneView.automaticallyUpdatesLighting = true // to adjust light automatically
+        
+        // to do solar system you can find textures from web and change the contents.
 
         
 
