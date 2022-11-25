@@ -3,7 +3,7 @@
 //  SolarSystemARKit
 //
 //  Created by Ali serkan Boyracı  on 25.11.2022.
-//
+// new project
 
 import UIKit
 import SceneKit
