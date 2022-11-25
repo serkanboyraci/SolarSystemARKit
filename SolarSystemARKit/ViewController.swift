@@ -19,21 +19,49 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Set the view's delegate
         sceneView.delegate = self
         
-        let myBox = SCNBox(width: 0.1, height:0.1 , length: 0.1, chamferRadius: 0.1) // you can not only just box, also pentagon or heptagon. because you have 4 parameters.
+        /* let myBox = SCNBox(width: 0.1, height:0.1 , length: 0.1, chamferRadius: 0.01) // you can not only just box, also pentagon or heptagon. because you have 4 parameters. if you want more sphere you can give more number to chamferRadius
+        let myBox = SCNSphere(radius: 0.1)
         
         let boxMaterial = SCNMaterial()
         
-        boxMaterial.diffuse.contents = UIImage(named: "art.scnassets/wall.png") // giving texture to the box
+        boxMaterial.diffuse.contents = UIImage(named: "art.scnassets/grass.png") // giving texture to the box
         
         myBox.materials = [boxMaterial] // you can define material of your object
         
         let node = SCNNode()
         node.position = SCNVector3(0, 0.1, -0.5) // with CGFloat
         node.geometry = myBox
-        sceneView.scene.rootNode.addChildNode(node) // to define rootnode
+        */
+        
+        let mySphere = createSphere(radius: 0.1, content: "grass.png", vector: SCNVector3(x: 0.1, y: 0.1, z: -1))
+        sceneView.scene.rootNode.addChildNode(mySphere) // to define rootnode
+        
+        let mySphere2 = createSphere(radius: 0.1, content: "wall.png", vector: SCNVector3(x: 0.4, y: 0.1, z: -1))
+        sceneView.scene.rootNode.addChildNode(mySphere2) // to define rootnode
+        
+        let mySphere3 = createSphere(radius: 0.1, content: "wood.jpg", vector: SCNVector3(x: 0.7, y: 0.1, z: -1))
+        sceneView.scene.rootNode.addChildNode(mySphere3) // to define rootnode
+        
+        sceneView.automaticallyUpdatesLighting = true // to adjust light automatically
 
         
 
+    }
+    
+    func createSphere(radius: CGFloat, content: String, vector: SCNVector3) -> SCNNode { // to define a func.
+        let mySphere = SCNSphere(radius: radius)
+        
+        let boxMaterial = SCNMaterial()
+        
+        boxMaterial.diffuse.contents = UIImage(named: "art.scnassets/\(content)") // giving texture to the box
+        
+        mySphere.materials = [boxMaterial] // you can define material of your object
+        
+        let node = SCNNode()
+        node.position = vector // with CGFloat
+        node.geometry = mySphere
+        
+        return node
     }
     
     override func viewWillAppear(_ animated: Bool) {
